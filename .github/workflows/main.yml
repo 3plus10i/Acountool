@@ -36,8 +36,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          # GitHub 密钥
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           # 发布分支
           BRANCH: gh-pages
           # 构建成果所在目录
