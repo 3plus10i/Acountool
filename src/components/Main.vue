@@ -48,6 +48,7 @@
                       <v-textarea
                         v-else
                         class = "textinput"
+                        label="记点文本"
                         style="font-family: 'Courier New'"
                         no-resize
                         v-bind:height="topHeight - 15"
@@ -78,6 +79,7 @@
                       color="primary"
                       class="mt-13"
                       v-on:click="OnCopyIn"
+                      v-if="copy"
                     >
                       粘贴文本
                     </v-btn>
@@ -107,7 +109,8 @@
                 <v-row>
                   <!-- Top left part -->
                   <v-col
-                    cols="8"
+                    cols="if(copy){ return 8} else { return 12; };"
+
                   >
                     <v-sheet 
                       color="darken-2"
@@ -129,6 +132,7 @@
                   <v-col
                     cols="4"
                     class="ml-0 pl-0"
+                    v-if="copy"
                   >
                     <v-btn
                       block
@@ -194,6 +198,7 @@ export default {
   data() {
     return {
       test: false,
+      copy: false,
       inputText: "",
       outputText: "",
       tabs: 2,
