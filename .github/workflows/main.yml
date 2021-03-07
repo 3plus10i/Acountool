@@ -25,11 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
 
-      # Runs a single command using the runners shell
-      - name: Install and build
-        run: |
-          yarn init
-          yarn run build
+      # Install and Build
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build # will run `yarn build` command
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.0
